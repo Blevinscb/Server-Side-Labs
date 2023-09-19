@@ -68,7 +68,7 @@ namespace Lab2
 
                 foreach (var game in top5Games)
                 {
-                    Console.WriteLine($"{game.Name} - Global Sales: {game.GlobalSales}");
+                    Console.WriteLine($"{game.Name}: Global Sales: {game.GlobalSales}");
                 }
 
                 Console.WriteLine();
