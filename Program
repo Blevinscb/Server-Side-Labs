@@ -63,7 +63,7 @@ namespace Lab2
             //just prints out the top 5 games by system
             foreach (var platform in gamesBySystem.Keys)
             {
-                Console.WriteLine($"Top 5 games for {platform}:");
+                Console.WriteLine($"Top 5 games by {platform}:");
                 var top5Games = top5GamesRetrieved(platform);
 
                 foreach (var game in top5Games)
