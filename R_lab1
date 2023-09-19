@@ -1,0 +1,91 @@
+namespace R_Lab1
+{
+    //implements the ICOmparable and initializes the strings of the videogames 
+    public class VideoGame : IComparable<VideoGame>
+    {
+        public string Name;
+        public string Platform;
+        public string year;
+        public string genre;
+        public string publisher;
+        public string NaSales;
+        public string EuSales;
+        public string JpSales;
+        public string OtherSales;
+        public string GlobalSales;
+        public VideoGame videoGame;
+        //creates the properties of VideoGames
+        public VideoGame()
+        {
+            Name = string.Empty;
+            Platform = string.Empty;
+            year = string.Empty;
+            genre = "Strategy";
+            publisher = string.Empty;
+            NaSales = string.Empty;
+            EuSales = string.Empty;
+            JpSales = string.Empty;
+            OtherSales = string.Empty;
+            GlobalSales = string.Empty;
+
+        }
+        //is the set method essentially for the properties
+        public VideoGame(string name, string platform, string year, string genre, string publisher, string naSales, string euSales, string jpSales, string otherSales, string globalSales)
+        {
+            Name = name;
+            Platform = platform;
+            this.year = year;
+            this.genre = genre;
+            this.publisher = publisher;
+            NaSales = naSales;
+            EuSales = euSales;
+            JpSales = jpSales;
+            OtherSales = otherSales;
+            GlobalSales = globalSales;
+        }
+
+        //compares 
+        public int CompareTo(VideoGame other)
+        {
+            if (other == null)
+                return 1;
+
+            // ascending order for titles
+            return string.Compare(this.Name, other.Name, StringComparison.OrdinalIgnoreCase);
+        }
+        //toString to produce the right output 
+        public override string ToString()
+        {
+            string VGString = string.Empty;
+
+            VGString += $"Name: {Name}\n";
+            VGString += $"Platform: {Platform}\n";
+            VGString += $"Year: {year}\n";
+            VGString += $"Genre: {genre}\n";
+            VGString += $"Publisher: {publisher}\n";
+            VGString += $"Na-Sales: {NaSales}\n";
+            VGString += $"Eu-Sales: {EuSales}\n";
+            VGString += $"Jp-Sales: {JpSales}\n";
+            VGString += $"Other Sales: {OtherSales}\n";
+            VGString += $"Global Sales: {GlobalSales}\n";
+
+            return VGString;
+        }
+        //creates a base for an existing video game
+        public VideoGame(VideoGame existingVideoGame)
+        {
+
+            existingVideoGame.Name = Name;
+            existingVideoGame.Platform = Platform;
+            existingVideoGame.year = year;
+            existingVideoGame.genre = genre;
+            existingVideoGame.publisher = publisher;
+            existingVideoGame.NaSales = NaSales;
+            existingVideoGame.EuSales = EuSales;
+            existingVideoGame.JpSales = JpSales;
+            existingVideoGame.OtherSales = OtherSales;
+            existingVideoGame.GlobalSales = GlobalSales;
+        }
+
+    }
+}
