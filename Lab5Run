@@ -13,8 +13,8 @@ class Program
         {
             Console.WriteLine("Star Wars Info Viewer");
             Console.WriteLine("1. View character information");
-            Console.WriteLine("2. View episode/movie information");
-            Console.WriteLine("3. View location information");
+            Console.WriteLine("2. films information");
+            Console.WriteLine("3. View planets information");
             Console.WriteLine("4. View multiple characters");
             Console.WriteLine("5. Exit");
             Console.Write("Enter your choice: ");
@@ -64,16 +64,45 @@ class Program
                     {
                         string responseBody = await response.Content.ReadAsStringAsync();
                         JObject characterData = JObject.Parse(responseBody);
+                        string birth_year = characterData["birth_year"].ToString();
+                        string eyeColor = characterData["eyeColor"].ToString();
+                        string films = characterData["films"].ToString();
+                        string gender = characterData["gender"].ToString();
                         string name = characterData["name"].ToString();
+                        string hairColor = characterData["hair_Color"].ToString();
+                        string homeworld = characterData["homeworld"].ToString();
+                        string mass = characterData["mass"].ToString();
                         string species = characterData["species"].ToString();
                         string status = characterData["status"].ToString();
                         string origin = characterData["origin"]["name"].ToString();
+                        string height = characterData["height"].ToString();
+                        string skinColor = characterData["skin color"].ToString();
+                        string vehichles = characterData["vehicles"].ToString();
+                        string starShips = characterData["starships"].ToString();
+                        string created = characterData["created"].ToString();
+                        string edited = characterData["edited"].ToString();
+                        string url = characterData["url"].ToString();
+
 
 
                         Console.WriteLine($"Character ID: {peopleId}");
                         Console.WriteLine($"Name: {name}");
                         Console.WriteLine($"Species: {species}");
+                        Console.WriteLine($"Status: {birth_year}");
+                        Console.WriteLine($"Status: {eyeColor}");
+                        Console.WriteLine($"Status: {films}");
+                        Console.WriteLine($"Status: {gender}");
+                        Console.WriteLine($"Status: {hairColor}");
+                        Console.WriteLine($"Status: {homeworld}");
+                        Console.WriteLine($"Status: {mass}");
                         Console.WriteLine($"Status: {status}");
+                        Console.WriteLine($"Status: {height}");
+                        Console.WriteLine($"Status: {skinColor}");
+                        Console.WriteLine($"Status: {vehichles}");
+                        Console.WriteLine($"Status: {starShips}");
+                        Console.WriteLine($"Status: {created}");
+                        Console.WriteLine($"Status: {edited}");
+                        Console.WriteLine($"Status: {url}");
                         Console.WriteLine($"Origin: {origin}");
                         Console.WriteLine("----------");
                     }
@@ -91,6 +120,7 @@ class Program
     }
     static async Task ViewCharacterInformation()
     {
+        string peopleId;
         Console.Write("Enter character ID: ");
         if (!int.TryParse(Console.ReadLine(), out int nameId) || nameId <= 0)
         {
@@ -102,19 +132,55 @@ class Program
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{nameId}");
+                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/api/people/{nameId}");
 
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
                     JObject characterData = JObject.Parse(responseBody);
 
-                    Console.WriteLine("----------");
-                    Console.WriteLine("Character Information:");
-                    Console.WriteLine($"Name: {characterData["name"]}");
-                    Console.WriteLine($"Species: {characterData["species"]}");
-                    Console.WriteLine($"Status: {characterData["status"]}");
-                    Console.WriteLine($"Origin: {characterData["origin"]["name"]}");
+                    string name = characterData["name"].ToString();
+                    string height = characterData["height"].ToString();
+                    string mass = characterData["mass"].ToString();
+                    //string hairColor = characterData["hair_Color"].ToString();
+                    //string skinColor = characterData["skin color"].ToString();
+                   // string eyeColor = characterData["eyeColor"].ToString();
+                    string birth_year = characterData["birth_year"].ToString();
+                    string gender = characterData["gender"].ToString();
+                    string homeworld = characterData["homeworld"].ToString();
+                    string films = characterData["films"].ToString();
+                    string species = characterData["species"].ToString();
+                    string vehichles = characterData["vehicles"].ToString();
+                    string starShips = characterData["starships"].ToString();
+                    string created = characterData["created"].ToString();
+                    string edited = characterData["edited"].ToString();
+                    string url = characterData["url"].ToString();
+
+
+
+
+
+
+
+
+                    Console.WriteLine($"Character ID: {nameId}");
+                    Console.WriteLine($"Name: {name}");
+                    Console.WriteLine($"Species: {species}");
+                    Console.WriteLine($"birth year: {birth_year}");
+                    //Console.WriteLine($"Status: {eyeColor}");
+                    Console.WriteLine($"films: {films}");
+                    Console.WriteLine($"gender: {gender}");
+                    //Console.WriteLine($"Status: {hairColor}");
+                    Console.WriteLine($"homeworld: {homeworld}");
+                    Console.WriteLine($"mass: {mass}");
+                    Console.WriteLine($"height: {height}");
+                    //Console.WriteLine($"Status: {skinColor}");
+                    Console.WriteLine($"vehicles: {vehichles}");
+                    Console.WriteLine($"StarShips: {starShips}");
+                    Console.WriteLine($"created: {created}");
+                    Console.WriteLine($"edited: {edited}");
+                    Console.WriteLine($"url: {url}");
+
                     Console.WriteLine("----------");
                 }
                 else
@@ -132,7 +198,7 @@ class Program
     static async Task ViewEpisodeInformation()
     {
         Console.Write("Enter episode ID: ");
-        if (!int.TryParse(Console.ReadLine(), out int locationId) || locationId <= 0)
+        if (!int.TryParse(Console.ReadLine(), out int filmId) || filmId <= 0)
         {
             Console.WriteLine("Invalid episode ID. Please enter a positive integer.");
             return;
@@ -142,16 +208,29 @@ class Program
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{locationId}");
+                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{filmId}");
 
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
                     JObject episodeData = JObject.Parse(responseBody);
+                    string title = episodeData["title"].ToString();
+                    string episode_id = episodeData["episode_id"].ToString();
+                    string director = episodeData["director"].ToString();
+                    string producer = episodeData["producer"].ToString();
+                    string release_date = episodeData["release_date"].ToString();
+                    string characters = episodeData["characters"].ToString();
+                    string planets = episodeData["planets"].ToString();
+                    string starships = episodeData["starships"].ToString();
+                    string vehicles = episodeData["vehicles"].ToString();
+                    string created = episodeData["created"].ToString();
+                    string edited = episodeData["edited"].ToString();
+                    string url = episodeData["url"].ToString();
+
 
                     Console.WriteLine("----------");
                     Console.WriteLine("Episode Information:");
-                    Console.WriteLine($"Name: {episodeData["name"]}");
+                    Console.WriteLine($"Name: {episodeData["title"]}");
                     Console.WriteLine($"Air Date: {episodeData["air_date"]}");
                     Console.WriteLine($"Episode Code: {episodeData["episode"]}");
                     Console.WriteLine("----------");
