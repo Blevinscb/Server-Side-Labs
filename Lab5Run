@@ -56,9 +56,9 @@ class Program
         {
             try
             {
-                foreach (int characterId in characterIds)
+                foreach (int peopleId in characterIds)
                 {
-                    HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{characterId}");
+                    HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{peopleId}");
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -70,7 +70,7 @@ class Program
                         string origin = characterData["origin"]["name"].ToString();
 
 
-                        Console.WriteLine($"Character ID: {characterId}");
+                        Console.WriteLine($"Character ID: {peopleId}");
                         Console.WriteLine($"Name: {name}");
                         Console.WriteLine($"Species: {species}");
                         Console.WriteLine($"Status: {status}");
@@ -79,7 +79,7 @@ class Program
                     }
                     else
                     {
-                        Console.WriteLine($"Error for Character ID {characterId}: {response.StatusCode} - {response.ReasonPhrase}");
+                        Console.WriteLine($"Error for Character ID {peopleId}: {response.StatusCode} - {response.ReasonPhrase}");
                     }
                 }
             }
@@ -92,7 +92,7 @@ class Program
     static async Task ViewCharacterInformation()
     {
         Console.Write("Enter character ID: ");
-        if (!int.TryParse(Console.ReadLine(), out int characterId) || characterId <= 0)
+        if (!int.TryParse(Console.ReadLine(), out int nameId) || nameId <= 0)
         {
             Console.WriteLine("Invalid character ID. Please enter a positive integer.");
             return;
@@ -102,7 +102,7 @@ class Program
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{characterId}");
+                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{nameId}");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -132,7 +132,7 @@ class Program
     static async Task ViewEpisodeInformation()
     {
         Console.Write("Enter episode ID: ");
-        if (!int.TryParse(Console.ReadLine(), out int episodeId) || episodeId <= 0)
+        if (!int.TryParse(Console.ReadLine(), out int locationId) || locationId <= 0)
         {
             Console.WriteLine("Invalid episode ID. Please enter a positive integer.");
             return;
@@ -142,7 +142,7 @@ class Program
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{episodeId}");
+                HttpResponseMessage response = await client.GetAsync($"https://swapi.dev/{locationId}");
 
                 if (response.IsSuccessStatusCode)
                 {
